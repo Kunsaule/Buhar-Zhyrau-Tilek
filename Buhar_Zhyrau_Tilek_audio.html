@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Бұқар жырау — «Тілек» | 9-сынып</title>
+<style>
+:root{--ink:#18352f;--green:#17483d;--gold:#d8a72f;--paper:#fbf7ed;--card:#fff;--muted:#66736f;--ok:#176b45;--bad:#a83d35}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--paper);color:#17211e;line-height:1.55}
+header{background:linear-gradient(135deg,#0d332b,#1b5649);color:#fff;padding:32px 18px}
+.wrap{max-width:1050px;margin:auto}.eyebrow{color:#f0c85b;font-weight:800;letter-spacing:.08em}.title{font-family:Georgia,serif;font-size:clamp(34px,6vw,64px);margin:5px 0}.sub{font-size:18px;opacity:.92}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.btn,button{border:0;border-radius:999px;padding:11px 16px;font-weight:750;cursor:pointer}.btn{background:#ffffff18;color:white;border:1px solid #ffffff33}.gold{background:var(--gold)!important;color:#15251f!important}
+main{max-width:1050px;margin:22px auto;padding:0 16px}.card{background:var(--card);border:1px solid #eadfbe;border-radius:22px;padding:22px;margin:16px 0;box-shadow:0 8px 28px #23352d0d}
+h2{color:var(--green);font-family:Georgia,serif;font-size:30px;margin-top:0}h3{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.mini{padding:16px;border-radius:16px;background:#f7f2e5;border:1px solid #e9ddbd}
+.tag{display:inline-block;padding:5px 10px;border-radius:99px;background:#e8f1ed;color:#245244;font-size:13px;font-weight:750;margin:3px}
+input,textarea,select{width:100%;padding:12px;border:1px solid #cfd8d4;border-radius:12px;font:inherit;margin:6px 0 10px}textarea{min-height:100px}
+.action{background:var(--green);color:white}.secondary{background:#eee7d5;color:#273b34}.result{padding:12px;border-radius:12px;margin-top:10px;display:none}.ok{background:#e7f5ec;color:var(--ok)}.bad{background:#faeae7;color:var(--bad)}
+.hidden{display:none!important}.wish{cursor:pointer}.wish .detail{display:none;margin-top:10px;color:#394c45}.wish.open .detail{display:block}
+.timeline{border-left:4px solid var(--gold);padding-left:18px}.step{margin:14px 0}
+.quiz label{display:block;padding:8px;border-radius:10px}.teacher{background:#eef4f1}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}
+.notice{border-left:5px solid var(--gold);padding:12px 15px;background:#fff8df;border-radius:10px}
+footer{text-align:center;padding:30px;color:var(--muted)}
+@media(max-width:600px){.card{padding:17px}.title{font-size:38px}table{font-size:12px}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="eyebrow">9-СЫНЫП • ҚАЗАҚ ӘДЕБИЕТІ</div>
+<div class="title">Бұқар жырау «Тілек»</div>
+<div class="sub">Интерактивті оқу құралы • 9.1.1.1 әдеби шығармаға сюжеттік-композициялық талдау жасау</div>
+<nav>
+<a class="btn" href="#start">🏠 Басты бет</a><a class="btn" href="#author">👤 Жырауды таны</a><a class="btn" href="#genre">📚 Толғау</a>
+<a class="btn" href="#audio">🎧 Тыңдау</a><a class="btn gold" href="#wishes">💭 11 тілек</a><a class="btn" href="#lab">🧩 Композиция</a><a class="btn" href="#quiz">🏆 Тест</a>
+<button class="btn" onclick="teacherLogin()">🔐 Мұғалім</button>
+</nav>
+</div>
+</header>
+
+<main>
+<section id="start" class="card">
+<h2>Сабаққа қош келдің!</h2>
+<p><b>Оқу мақсаты:</b> 9.1.1.1 әдеби шығармаға сюжеттік-композициялық талдау жасау.</p>
+<p><b>Сабақ мақсаты:</b> «Тілек» толғауының мазмұны мен идеялық тереңдігін зерделеп, композициялық құрылымын талдау; рухани, адамгершілік, отбасылық және елдік құндылықтарды анықтау; жыраудың философиялық ойларын қазіргі өмірмен байланыстырып, сыни баға беру.</p>
+<div class="grid">
+<div class="mini"><b>1.</b> Жырауды таны</div><div class="mini"><b>2.</b> Толғауды түсін</div><div class="mini"><b>3.</b> 11 ойды зертте</div><div class="mini"><b>4.</b> Композицияны талда</div>
+</div>
+<h3>Оқушының аты-жөні</h3>
+<input id="studentName" placeholder="Мысалы: Айару Нұрланқызы">
+<button class="action" onclick="saveName()">Сабақты бастау</button><span id="hello"></span>
+</section>
+
+<section id="author" class="card">
+<h2>👤 Бұқар жырауды таны</h2>
+<p><b>Бұқар Қалқаманұлы</b> — XVIII ғасырдағы қазақ жыраулық поэзиясының ірі өкілі, ойшыл, шешен. Халық оны сөзінің салмағы мен терең толғамына байланысты «Көмекей әулие» деп атаған.</p>
+<div class="grid">
+<div class="mini"><h3>Жырау</h3><p>Қоғам, ел тағдыры, адам өмірі туралы толғанып, халыққа бағыт-бағдар беретін сөз иесі.</p></div>
+<div class="mini"><h3>Ойшыл</h3><p>Адамның мінезі, өмірдің өткіншілігі, бірлік, ар-намыс, имандылық туралы философиялық ой айтады.</p></div>
+<div class="mini"><h3>Дәуір үні</h3><p>Жырау поэзиясында елдік сана, ынтымақ, тыныштық және ұрпақ тәрбиесі маңызды орын алады.</p></div>
+</div>
+<div class="notice"><b>Ескер:</b> Бұқар жыраудың туған және қайтыс болған жылдары жөнінде дереккөздерде нұсқалық айырмашылықтар кездеседі. Сондықтан бұл сабақта негізгі назар шығармашылық тұлғасы мен «Тілек» толғауына аударылады.</div>
+</section>
+
+<section id="genre" class="card">
+<h2>📚 Жырау және толғау</h2>
+<p><span class="tag">Жырау</span> қоғамдық-философиялық ойды өлеңмен жеткізуші тұлға. <span class="tag">Толғау</span> — өмір, заман, адам, ел туралы ой-толғанысқа құрылған поэзиялық жанр.</p>
+<div class="grid">
+<div class="mini"><b>Дидактикалық сипат</b><br>Өсиет, бағыт, сақтандыру, өнеге.</div>
+<div class="mini"><b>Философиялық сипат</b><br>Өмір құндылықтарын терең пайымдау.</div>
+<div class="mini"><b>Композициялық сипат</b><br>Оқиғадан гөрі ойдың сатыланып дамуы басым.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>📖 «Тілек» толғауын оқу</h2>
+<p>Толғау бірінен кейін бірі өрілетін тілектер жүйесі арқылы адамның жеке өмірінен отбасыға, ел мен қоғамға дейінгі құндылықтарды пайымдатады.</p>
+<div class="notice">Оқулықтағы немесе мұғалім ұсынған толық мәтінді қатар оқы. Бұл бетте шығарманың толық мәтінін қайталамай, әр тілектің мазмұндық өзегін талдаймыз.</div>
+<h3>Сөздік</h3>
+<div class="grid">
+<div class="mini"><b>Пиғыл</b> — ниет, ой, мақсат.</div><div class="mini"><b>Залым</b> — әділетсіз, зұлым адам.</div>
+<div class="mini"><b>Бинамаз</b> — діни міндетті орындамайтын адам деген көне қолданыс.</div><div class="mini"><b>Тұлдану</b> — жақынынан айырылып, қаралы болу мағынасындағы қолданыс.</div>
+</div>
+</section>
+
+
+<section id="audio" class="card">
+<h2>🎧 «Тілек» толғауын тыңда</h2>
+<p>Мәтінді талдамас бұрын Бұқар жыраудың «Бірінші тілек тілеңіз» шығармасын кәсіби мәнерлеп оқылған нұсқада тыңдап ал.</p>
+<div class="mini">
+<h3>Ресми аудионұсқа</h3>
+<p><b>Диктор:</b> Бүркіт Бекмағамбетов<br><b>Ұзақтығы:</b> 2 минут</p>
+<p><a class="btn gold" style="display:inline-block;text-decoration:none" href="https://kitap.kz/books/birinshi-tilek-tilengiz" target="_blank" rel="noopener">▶️ Kitap.kz-та тыңдау</a></p>
+<small>Аудио ресми Kitap.kz парақшасында ашылады. Тыңдап болған соң осы сабақ бетіне қайта орал.</small>
+</div>
+<h3>🎧 Тыңдалымнан кейін</h3>
+<p><b>Қай тілек саған ерекше ой салды? Неліктен?</b> Ойыңды 2–3 сөйлеммен жаз.</p>
+<textarea id="audioReflection" placeholder="Маған ... тілек ерекше ой салды. Себебі ..."></textarea>
+<button class="action" onclick="saveOpen('audioReflection','Аудио тыңдалымнан кейінгі жауап')">Жауапты жіберу</button>
+<div id="audioReflectionMsg" class="result ok">Жауабың мұғалім тақтасына жіберілді.</div>
+</section>
+
+<section id="wishes" class="card">
+<h2>💭 Он бір тілек — он бір ой</h2>
+<p>Карточканы басып, мазмұндық өзегін аш.</p>
+<div class="grid" id="wishGrid"></div>
+</section>
+
+<section id="lab" class="card">
+<h2>🧩 Композиция зертханасы</h2>
+<div class="notice"><b>Маңызды:</b> «Тілек» — оқиғалы эпикалық шығарма емес. Сондықтан композицияны тек «оқиға басталды — шиеленісті — шешілді» үлгісімен талдау жеткіліксіз. Мұнда <b>ой қозғалысы</b> негізгі қызмет атқарады.</div>
+<div class="timeline">
+<div class="step"><b>1. Бастау:</b> тілек айту формасы арқылы өсиеттік үн қалыптасады.</div>
+<div class="step"><b>2. Даму:</b> адамды рухани және өмірлік қауіптерден сақтандыру ойы өрбиді.</div>
+<div class="step"><b>3. Кеңею:</b> жеке адамнан отбасы, жақындар, елдік орта құндылықтарына өтеді.</div>
+<div class="step"><b>4. Тереңдеу:</b> ар, амандық, бірлік, өмір мен тағдыр туралы философиялық пайым күшейеді.</div>
+<div class="step"><b>5. Түйін:</b> адамға ең қымбат құндылықтардың амандығын тілеу арқылы гуманистік идея бекітіледі.</div>
+</div>
+<h3>Талдау тапсырмасы</h3>
+<textarea id="composition" placeholder="Толғаудың композициялық тұтастығын 4–6 сөйлеммен дәлелде..."></textarea>
+<button class="action" onclick="saveOpen('composition','Композициялық талдау')">Жауапты жіберу</button>
+<div id="compositionMsg" class="result ok">Жауап мұғалім тақтасына жіберілді.</div>
+</section>
+
+<section class="card">
+<h2>🎯 Құндылықты тап</h2>
+<p>Әр ойға ең жақын құндылықты таңда.</p>
+<div id="valuesTask"></div>
+<button class="action" onclick="checkValues()">Тексеру</button>
+<div id="valuesResult" class="result"></div>
+</section>
+
+<section class="card">
+<h2>🔎 Жыраудың философиялық формуласы</h2>
+<p><b>ТІЛЕК → ҚАУІП → САҚТАНУ → ҚҰНДЫЛЫҚ</b></p>
+<p>Бір тілекті таңдап, осы төрт буын арқылы өз сөзіңмен талда.</p>
+<textarea id="formula" placeholder="Тілек: ... → Қауіп: ... → Сақтану: ... → Құндылық: ..."></textarea>
+<button class="action" onclick="saveOpen('formula','Философиялық формула')">Жіберу</button>
+<div id="formulaMsg" class="result ok">Жауап жіберілді.</div>
+</section>
+
+<section class="card">
+<h2>⏳ XVIII ғасыр ↔ XXI ғасыр</h2>
+<p>Жырау көтерген бір құндылықты бүгінгі қоғаммен байланыстырып, нақты мысал келтір.</p>
+<textarea id="modern" placeholder="Мысалы: ел тыныштығы — бүгінгі қоғамдық тұрақтылық..."></textarea>
+<button class="action" onclick="saveOpen('modern','XVIII–XXI ғасыр салыстыруы')">Жіберу</button>
+<div id="modernMsg" class="result ok">Жауап жіберілді.</div>
+</section>
+
+<section class="card">
+<h2>🧠 Сенің таңдауың</h2>
+<p><b>Қазіргі жас ұрпақ үшін ең маңызды үш тілекті таңда. Неліктен?</b> Шығарма идеясымен байланыстырып дәлелде.</p>
+<textarea id="choice" placeholder="Мен үшін маңызды үш тілек... Себебі..."></textarea>
+<button class="action" onclick="saveOpen('choice','Ең маңызды үш тілек')">Жіберу</button>
+<div id="choiceMsg" class="result ok">Жауап жіберілді.</div>
+</section>
+
+<section class="card">
+<h2>⚖️ Сыни бағалау</h2>
+<p>«Тілек» толғауы бүгінгі қоғам үшін де өмірлік бағдар бола ала ма?</p>
+<select id="position"><option>ИӘ</option><option>ІШІНАРА</option><option>ЖОҚ</option></select>
+<textarea id="critical" placeholder="Позицияңды кемінде екі дәлелмен негізде..."></textarea>
+<button class="action" onclick="saveCritical()">Позициямды жіберу</button>
+<div id="criticalMsg" class="result ok">Сыни жауабың жіберілді.</div>
+</section>
+
+<section id="quiz" class="card quiz">
+<h2>🏆 Қорытынды тест</h2>
+<div id="quizBox"></div>
+<button class="action" onclick="gradeQuiz()">Нәтижені көру</button>
+<div id="quizResult" class="result"></div>
+</section>
+
+<section class="card">
+<h2>💬 Exit ticket</h2>
+<textarea id="exit" placeholder="Бүгін білдім... / Мені ойландырған тілек... / Бұқар жырауға бір сұрақ қойсам..."></textarea>
+<button class="action" onclick="saveOpen('exit','Рефлексия')">Рефлексияны жіберу</button>
+<div id="exitMsg" class="result ok">Рефлексия сақталды.</div>
+</section>
+
+<section id="teacherPanel" class="card teacher hidden">
+<h2>🔐 Мұғалім тақтасы</h2>
+<p>Бұл тақта тек осы «Бұқар жырау — Тілек» сабағының <code>buharTilekLesson</code> деректерін көрсетеді.</p>
+<button class="secondary" onclick="loadTeacher()">🔄 Жаңарту</button>
+<button class="secondary" onclick="document.getElementById('teacherPanel').classList.add('hidden')">Жасыру</button>
+<div style="overflow:auto;margin-top:12px"><table><thead><tr><th>Оқушы</th><th>Бөлім</th><th>Жауап/нәтиже</th><th>Уақыт</th></tr></thead><tbody id="teacherRows"></tbody></table></div>
+</section>
+</main>
+<footer>Бұқар жырау «Тілек» • 9-сынып • Интерактивті сабақ</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig={
+ apiKey:"AIzaSyD3Wvoaxr4_brjafOPONaDf3dlPtW0IzSM",
+ authDomain:"tole-bi-97368.firebaseapp.com",
+ databaseURL:"https://tole-bi-97368-default-rtdb.firebaseio.com",
+ projectId:"tole-bi-97368",
+ storageBucket:"tole-bi-97368.firebasestorage.app",
+ messagingSenderId:"123899101649",
+ appId:"1:123899101649:web:9d6a567553e1407327a0f0",
+ measurementId:"G-R1X28L6803"
+};
+firebase.initializeApp(firebaseConfig);
+const db=firebase.database(), ROOT="buharTilekLesson";
+let student=localStorage.getItem("buharStudent")||"";
+
+function saveName(){
+ const n=document.getElementById("studentName").value.trim();
+ if(!n){alert("Аты-жөніңді жаз.");return}
+ student=n;localStorage.setItem("buharStudent",n);
+ document.getElementById("hello").textContent="  Қош келдің, "+n+"!";
+ send("Кіру","Сабаққа кірді");
+}
+if(student){document.getElementById("studentName").value=student;document.getElementById("hello").textContent="  Қош келдің, "+student+"!";}
+function ensureName(){if(!student){alert("Алдымен жоғарыда аты-жөніңді жазып, «Сабақты бастау» батырмасын бас.");return false}return true}
+function send(section,answer,score=null){
+ if(!ensureName())return Promise.reject();
+ return db.ref(ROOT+"/submissions").push({student,section,answer,score,ts:firebase.database.ServerValue.TIMESTAMP});
+}
+function saveOpen(id,section){
+ const v=document.getElementById(id).value.trim(); if(!v){alert("Жауапты жаз.");return}
+ send(section,v).then(()=>{const m=document.getElementById(id+"Msg");if(m)m.style.display="block"}).catch(()=>{});
+}
+function saveCritical(){
+ const p=document.getElementById("position").value,c=document.getElementById("critical").value.trim();
+ if(!c){alert("Дәлеліңді жаз.");return}
+ send("Сыни бағалау",p+": "+c).then(()=>document.getElementById("criticalMsg").style.display="block");
+}
+const wishes=[
+["1-тілек","Рухани тазалық","Адамның ниеті мен сенімін таза ұстау, теріс жолдан сақтану идеясы."],
+["2-тілек","Ар мен абырой","Адамдық қадірді жоғалтпау, жамандыққа ұрынбау туралы ой."],
+["3-тілек","Әділет","Зұлымдық пен әділетсіздіктен аулақ болуды қалау."],
+["4-тілек","Амандық","Адам басына түсетін ауыр сыннан, қорлықтан сақтану тілегі."],
+["5-тілек","Жақындар","Туыстық байланыс пен жақын адамның амандығын қадірлеу."],
+["6-тілек","Отбасы","Шаңырақтың бүтіндігі мен отбасы тыныштығын жоғары қою."],
+["7-тілек","Бірлік","Адамдар арасындағы татулық пен өзара сүйенішті бағалау."],
+["8-тілек","Елдік сана","Қоғамдық тыныштық пен ел амандығын құндылық деп тану."],
+["9-тілек","Өмір қадірі","Тағдыр сынағына сабырмен қарап, амандықты бағалау."],
+["10-тілек","Ана қасіретінен сақтану","Ана мен перзент арасындағы байланыстың қасиетін таныту."],
+["11-тілек","Жар амандығы","Жесірлік, айырылысу қасіретінен сақтану, отбасы тұтастығын тілеу."]
+];
+document.getElementById("wishGrid").innerHTML=wishes.map((w,i)=>`<div class="mini wish" onclick="this.classList.toggle('open')"><b>${w[0]}</b><br>${w[1]}<div class="detail">${w[2]}<br><small>Ойлан: бұл құндылық бүгін де маңызды ма?</small></div></div>`).join("");
+
+const valueItems=[
+["Ата-ана мен жақынның амандығын тілеу","Отбасы"],
+["Жаман пиғылдан сақтану","Имандылық"],
+["Ел тыныштығын қалау","Ел-жер"],
+["Әділетсіздіктен аулақ болу","Адамгершілік"]
+];
+document.getElementById("valuesTask").innerHTML=valueItems.map((x,i)=>`<div class="mini"><b>${i+1}. ${x[0]}</b><select id="v${i}"><option>Таңда</option><option>Имандылық</option><option>Адамгершілік</option><option>Отбасы</option><option>Ел-жер</option></select></div>`).join("");
+function checkValues(){
+ let s=0;valueItems.forEach((x,i)=>{if(document.getElementById("v"+i).value===x[1])s++});
+ const r=document.getElementById("valuesResult");r.style.display="block";r.className="result "+(s===4?"ok":"bad");r.textContent=`${s}/4 дұрыс. ${s===4?"Өте жақсы!":"Қайта ойланып көр."}`;
+ if(student)send("Құндылықты тап",`${s}/4`,s);
+}
+
+const quiz=[
+["«Тілек» шығармасының жанры?",["Роман","Толғау","Әңгіме","Мысал"],1],
+["Толғауда композицияның негізгі қозғаушысы не?",["Оқиғалар тізбегі","Кейіпкерлер тартысы","Ойдың сатыланып дамуы","Диалог"],2],
+["Жырау поэзиясына тән белгі?",["Тек табиғатты суреттеу","Қоғамдық-философиялық толғаныс","Тек әзіл","Ғылыми баяндау"],1],
+["«Тілек» құрылымындағы қайталанатын тәсіл?",["Тілек формасының жүйелі берілуі","Хат үлгісі","Диалог","Пейзаж"],0],
+["Толғаудың идеясына ең жақын тұжырым?",["Байлық бәрінен жоғары","Адамдық және өмірлік құндылықтарды сақтау","Тек өткенді мадақтау","Ойын-сауықты дәріптеу"],1],
+["Шығарманы қазіргі өмірмен байланыстыру қандай дағдыны дамытады?",["Механикалық жаттау","Сыни бағалау","Көшіру","Тек мәнерлеп оқу"],1],
+["Композициялық талдауда не маңызды?",["Ой бөліктерінің байланысы мен даму логикасы","Тек жол санын санау","Тек автор атын білу","Тек ұйқас табу"],0]
+];
+document.getElementById("quizBox").innerHTML=quiz.map((q,i)=>`<div class="mini"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<label><input style="width:auto" type="radio" name="q${i}" value="${j}"> ${a}</label>`).join("")}</div>`).join("");
+function gradeQuiz(){
+ let s=0;quiz.forEach((q,i)=>{const a=document.querySelector(`input[name=q${i}]:checked`);if(a&&+a.value===q[2])s++});
+ const pct=Math.round(s/quiz.length*100),r=document.getElementById("quizResult");r.style.display="block";r.className="result "+(s>=5?"ok":"bad");r.innerHTML=`<b>${s}/${quiz.length}</b> — ${pct}%<br>${s>=6?"Өте жақсы нәтиже!":s>=5?"Жақсы. Бір-екі ұғымды қайтала.":"Теория мен композиция бөлімін қайта қарап шық."}`;
+ if(student)send("Қорытынды тест",`${s}/${quiz.length} (${pct}%)`,s);
+}
+function teacherLogin(){
+ const p=prompt("Мұғалім кодын енгізіңіз:");
+ if(p==="1985"){document.getElementById("teacherPanel").classList.remove("hidden");document.getElementById("teacherPanel").scrollIntoView({behavior:"smooth"});loadTeacher()}
+ else if(p!==null)alert("Код қате.");
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function loadTeacher(){
+ db.ref(ROOT+"/submissions").orderByChild("ts").once("value").then(s=>{
+  const rows=[];s.forEach(c=>rows.push(c.val()));rows.reverse();
+  document.getElementById("teacherRows").innerHTML=rows.length?rows.map(x=>`<tr><td>${esc(x.student)}</td><td>${esc(x.section)}</td><td>${esc(x.answer)}</td><td>${x.ts?new Date(x.ts).toLocaleString("kk-KZ"):""}</td></tr>`).join(""):`<tr><td colspan="4">Әзірге жауап жоқ.</td></tr>`;
+ }).catch(e=>{document.getElementById("teacherRows").innerHTML=`<tr><td colspan="4">Firebase оқу рұқсатын тексеру қажет: ${esc(e.message)}</td></tr>`});
+}
+</script>
+</body></html>
