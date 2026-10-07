@@ -279,7 +279,7 @@ function gradeQuiz(){
 }
 function teacherLogin(){
  const p=prompt("Мұғалім кодын енгізіңіз:");
- if(p==="1985"){document.getElementById("teacherPanel").classList.remove("hidden");document.getElementById("teacherPanel").scrollIntoView({behavior:"smooth"});loadTeacher()}
+ if(p==="1985"){document.getElementById("teacherPanel").classList.remove("hidden");document.getElementById("teacherPanel").scrollIntoView({behavior:"smooth"});loadTeacherCards()}
  else if(p!==null)alert("Код қате.");
 }
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
@@ -288,6 +288,69 @@ function loadTeacher(){
   const rows=[];s.forEach(c=>rows.push(c.val()));rows.reverse();
   document.getElementById("teacherRows").innerHTML=rows.length?rows.map(x=>`<tr><td>${esc(x.student)}</td><td>${esc(x.section)}</td><td>${esc(x.answer)}</td><td>${x.ts?new Date(x.ts).toLocaleString("kk-KZ"):""}</td></tr>`).join(""):`<tr><td colspan="4">Әзірге жауап жоқ.</td></tr>`;
  }).catch(e=>{document.getElementById("teacherRows").innerHTML=`<tr><td colspan="4">Firebase оқу рұқсатын тексеру қажет: ${esc(e.message)}</td></tr>`});
+}
+
+ function loadTeacherCards(){
+  db.ref(ROOT+"/submissions").orderByChild("ts").once("value").then(s=>{
+    const students={};
+
+    s.forEach(c=>{
+      const x=c.val();
+      const name=x.student || "Аты көрсетілмеген";
+
+      if(!students[name]) students[name]=[];
+      students[name].push(x);
+    });
+
+    const names=Object.keys(students).sort((a,b)=>a.localeCompare(b,"kk"));
+
+    const box=document.getElementById("teacherRows");
+
+    if(!names.length){
+      box.innerHTML='<tr><td colspan="4">Әзірге оқушы жауабы жоқ.</td></tr>';
+      return;
+    }
+
+    box.innerHTML=names.map(name=>{
+      const works=students[name];
+
+      const test=works
+        .filter(x=>x.section==="Қорытынды тест")
+        .slice(-1)[0];
+
+      const details=works.map(x=>`
+        <div style="padding:10px 0;border-bottom:1px solid #ddd;">
+          <b>${esc(x.section)}</b><br>
+          <span>${esc(x.answer)}</span>
+          <div style="font-size:12px;color:#66736f;margin-top:4px;">
+            ${x.ts ? new Date(x.ts).toLocaleString("kk-KZ") : ""}
+          </div>
+        </div>
+      `).join("");
+
+      return `
+        <tr>
+          <td colspan="4" style="padding:14px;">
+            <details>
+              <summary style="cursor:pointer;font-size:17px;font-weight:700;color:#17483d;">
+                👤 ${esc(name)}
+                ${test ? ` — 🏆 ${esc(test.answer)}` : ""}
+                — ${works.length} жауап
+              </summary>
+
+              <div style="margin-top:12px;background:#fff;padding:14px;border-radius:14px;">
+                ${details}
+              </div>
+            </details>
+          </td>
+        </tr>
+      `;
+    }).join("");
+
+  }).catch(e=>{
+    document.getElementById("teacherRows").innerHTML=
+      `<tr><td colspan="4">Firebase қатесі: ${esc(e.message)}</td></tr>`;
+  });
 }
 </script>
 </body></html>
